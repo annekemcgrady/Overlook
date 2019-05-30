@@ -1,13 +1,62 @@
 <!DOCTYPE html>
 <html lang="en-US">
   <head>
-    <title>Webpack Starter Kit</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Overlook | Welcome</title>
   </head>
   <body>
-    <h1>Webpack Starter Kit</h1>
-
-    <img src="/images/turing-logo.png" alt="turing logo" height="100px" width="100px">
-
+    <header class="header">
+      <!-- <img src="/images/turing-logo.png" alt="turing logo" height="100px" width="100px"> -->
+    </header>
+    <div class="quote">Quote Of The Day: "All work and no play makes Jack a dull boy" - Anonymous</div>
+    <main class="main">
+      <aside class="aside">
+        <h3>Your Reminders...</h3>
+        <ul class="to-do">
+          <li>Check the boiler!</li>
+          <li>Report complaints about room 217 to owners</li>
+          <li>Speech therapist for Danny?</li>
+          <li>Hire gardener for hedge maze</li>
+          <li>Buy typewriter ribbon</li>
+        </ul>
+        <form class="to-do-form">
+          <input type="text" class="to-do-input" placeholder="Enter a new reminder">
+          <button class="to-do-button">Add Reminder</button>
+        </form>
+      </aside>
+          <section class="container">
+            <ul class="tabs">
+              <li class="tab-link current" data-tab="tab-1">Main</li>
+              <li class="tab-link" data-tab="tab-2">Guest</li>
+              <li class="tab-link" data-tab="tab-3">Rooms</li>
+              <li class="tab-link" data-tab="tab-4">Orders</li>
+              </ul>
+              <div id="tab-1" class="tab-content current main">
+                <h2>Hello Jack!  Today is <span class="main-date"></span></h2>
+                <h2>Today's bookings are: <span class="main-bookings"></span>.</h2>
+                <h2>The hotel is <span class="main-percent"></span> occupied.</h2>
+                <h2>Today's room service orders are: <span class="main-orders"></span></h2>
+              </div>
+              <div id="tab-2" class="tab-content guest">
+                <h3>Current Guest: <span class="guest-name"></span></h3>
+                <form class="guest-search-form">
+                  <input class="guest-search-input" placeholder="Enter guest name"></input>
+                  <button type="button" class="guest-search-button">SEARCH</button>
+                </form>
+                <form class="guest-create-form">
+                  <input class="guest-create-input" placeholder="Enter new guest name"></input>
+                  <button type="button" class="guest-create-button">CREATE</button>
+                </form>
+              </div>
+              <div id="tab-3" class="tab-content rooms">
+                Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+              </div>
+              <div id="tab-4" class="tab-content orders">
+                Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+              </div>
+            </section>
+    </main>
     <!-- Do not include the index.js or main.bundle.js file here - it is done automatically by the webpack server -->
   </body>
 </html>
