@@ -9,7 +9,7 @@ $accent-color: #CAB8E2;
 * {
   box-sizing: border-box;
   margin: auto;
-  border: pink solid 1px;
+  // border: pink solid 1px;
 }
 
 body {
@@ -21,13 +21,16 @@ body {
   // background-size: cover;
 	background-repeat: no-repeat;
   background-position: center;
-  height: 300px;
+  height: 40vh;
 }
 
-.quote{
+.quote {
+  background-color: #8F4F58;
   text-align: center;
   font-family: $accent-font;
+  font-size: 1.2em;
   color: $accent-color;
+  margin-bottom: 5px;
 }
 .main {
   display: flex;
@@ -36,6 +39,8 @@ body {
 }
 .aside {
   font-family: $accent-font;
+  font-size: 1.2em;
+  color: $accent-color;
   height: 100%;
   width: 20%;
 }
@@ -52,19 +57,28 @@ body {
 
 .container {
   font-family: $primary-font;
+  font-size: 0.9em;
   margin: 0 auto;
   height: 100%;
   width: 80%;
 }
 
+.tab-content {
+  height: 60vh;
+}
+
 ul.tabs {
+  
+  font-size: 1em;
   margin: 0px;
   padding: 0px;
   list-style: none;
 }
 ul.tabs li {
+  font-family: $primary-font;
+  font-size: 1.2em;
   background: none;
-  color: #222;
+  color: $accent-color;
   display: inline-block;
   padding: 10px 15px;
   cursor: pointer;
@@ -83,4 +97,21 @@ ul.tabs li.current{
 
 .tab-content.current{
   display: inherit;
+}
+
+@media only screen and (max-width: 600px) {
+  .aside {
+    display: none;
+  }
+
+  .container {
+    width: 95%;
+  }
+
+  .header {
+    background-image: none;
+
+  }
+
+
 }

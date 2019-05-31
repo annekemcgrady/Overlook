@@ -1,5 +1,6 @@
 import Hotel from '../src/Hotel';
 import domUpdates from '../src/domUpdates'
+import sampleUsers from '../src/sampleUsers'
 import sampleBookings from '../src/sampleBookings'
 import sampleRoomService from '../src/sampleRoomService'
 var chai = require('chai');
@@ -14,12 +15,13 @@ chai.spy.on(domUpdates, [
 
 describe('Hotel', function() {
   let hotel;
+  let usersData = sampleUsers.users;
   let bookingsData = sampleBookings.bookings
   let orderData = sampleRoomService.roomServices
   let today = "17/11/2019";
   
   beforeEach(function() {
-    hotel = new Hotel(today, bookingsData, orderData)
+    hotel = new Hotel(today, usersData, bookingsData, orderData)
   }) 
 
   it('should be a function', function() {
@@ -35,7 +37,7 @@ describe('Hotel', function() {
   });
 
   it('should select all room service orders for a date', function() {
-    hotel = new Hotel("19/07/2019", bookingsData, orderData)
+    hotel = new Hotel("19/07/2019", usersData, bookingsData, orderData)
     expect(hotel.todayOrders).to.eql([
         { "date": "19/07/2019",
         "food": "Rustic Wooden Sandwich",
@@ -45,9 +47,13 @@ describe('Hotel', function() {
   });
 
   it('should total sales of all orders for a date', function() {
-    hotel = new Hotel("19/07/2019", bookingsData, orderData)
-    expect(hotel.orderCostByDate()).to.equal(5.86)
+    hotel = new Hotel("19/07/2019", usersData, bookingsData, orderData)
+    expect(hotel.todayOrderSalesTotal).to.equal(5.86)
   });
+
+  it('should find a user by name and return the user object', function(){
+    expect(hotel.findCurrentGuestByName("Reginald Schaden")).to.eql({id: 5, name: "Reginald Schaden"})
+  })
 
 });
 
