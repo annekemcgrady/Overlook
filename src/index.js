@@ -12,12 +12,14 @@ import './images/overlook-grand.jpg'
 
 import domUpdates from './domUpdates';
 import Hotel from './Hotel';
+import Guest from './Guest';
 
 let hotel;
-let userData;
+let currentGuest;
+
 
 $(document).ready(function() {
-
+let userData;
 fetch('https://fe-apps.herokuapp.com/api/v1/overlook/1903/users/users')
   .then(dataFile => dataFile.json())
   .then(dataFile => userData = dataFile.users);
@@ -40,16 +42,32 @@ fetch('https://fe-apps.herokuapp.com/api/v1/overlook/1903/room-services/roomServ
 
 function timer() {
   // console.log("booking data: ", bookingsData)
-  hotel = new Hotel("15/07/2019" ,bookingsData, roomServicesData)
+  hotel = new Hotel(today, userData, bookingsData, roomServicesData)
   domUpdates.displayAllTodayBookings(hotel.todayBookings)
   domUpdates.displayPercentOccupied(hotel.todayBookings)
   domUpdates.displayAllTodayOrders(hotel.todayOrders)
   domUpdates.displayTotalSalesRoomServiceToday(hotel.todayOrderSalesTotal)
   domUpdates.displayNumberAvailableRooms(hotel.todayBookings)
-  console.log(hotel)
-  }
+  
+  
+  $(".guest-search-form").on('submit', function(e) {
+    e.preventDefault()
+    let inputValue = $(".guest-search-input").val()
+    let obj = hotel.findCurrentGuestByName(inputValue)
+    if(!obj) {
+      domUpdates.displayErrorMsg()
+    } else {
+    currentGuest = new Guest(obj, bookingsData, roomServicesData)
+    console.log(currentGuest)
+    domUpdates.displayGuestName(currentGuest)
+    domUpdates.displayGuestBookings(currentGuest)
+    }
+    $(".guest-search-input").val('')
+  })
+}
 
-setTimeout(timer, 1000);
+
+setTimeout(timer, 500);
 
 let today = new Date();
 let dd = today.getDate();
@@ -64,7 +82,6 @@ if(mm<10)
     mm=`0${mm}`;
 } 
 today = `${dd}/${mm}/${yyyy}`;
-console.log(today);
 	
 	$('ul.tabs li').click(function(){
 		var tab_id = $(this).attr('data-tab');
@@ -77,4 +94,6 @@ console.log(today);
   })
   domUpdates.displayDate(today)
 
+
+ 
 })

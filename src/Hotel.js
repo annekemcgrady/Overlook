@@ -2,8 +2,9 @@ import domUpdates from './domUpdates';
 
 
 class Hotel {
-  constructor(date, allBookings, allOrders) {
+  constructor(date, allUsers, allBookings, allOrders) {
     this.date = date;
+    this.allUsers = allUsers;
     this.allBookings = allBookings;
     this.allOrders = allOrders;
     this.todayBookings = this.roomsBookedByDate(date);
@@ -27,6 +28,10 @@ class Hotel {
 
 return acc
 },0)
+}
+
+findCurrentGuestByName(currentName) {
+  return this.allUsers.find(user => user.name.toUpperCase() === currentName.toUpperCase())
 }
 
 

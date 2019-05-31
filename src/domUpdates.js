@@ -11,7 +11,7 @@ const domUpdates = {
 
   displayAllTodayBookings(bookings) {
     bookings.forEach(booking => {
-    $(".main-bookings").html(`<li>Room Number: ${booking}</li>`)
+    $(".main-bookings").append(`<li>Room Number: ${booking}</li>`)
     })
   },
    
@@ -25,12 +25,26 @@ const domUpdates = {
 
     displayAllTodayOrders(orders){
         orders.forEach(order => {
-        $(".main-orders").html(`<li>Room Service: ${order.food} $${order.totalCost}</li>`)
+        $(".main-orders").append(`<li>Room Service: ${order.food} $${order.totalCost}</li>`)
         })
     },
 
     displayNumberAvailableRooms(bookings) {
       $(".main-available-rooms").text(200-bookings.length)
+    },
+
+    displayGuestName(guest) {
+      $(".guest-name").text(guest.name)
+    },
+
+    displayGuestBookings(guest) {
+      guest.bookings.forEach(booking => {
+      $(".current-guest-bookings").append(`<li>${booking.date} in Room ${booking.roomNumber}</li>`)
+      })
+    },
+
+    displayErrorMsg() {
+      alert('No guest by that name')
     }
    
    };
@@ -45,8 +59,8 @@ const domUpdates = {
 
   //CUSTOMER
 
-  //Display customer name once selected
-  //Search input for customer by name
+  //Display customer name once selected - DONE
+  //Search input for customer by name - DONE
   //button to search and make enter work
   //input to create a new customer 
   //Update all tabs to include info for that user
