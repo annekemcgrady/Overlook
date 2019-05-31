@@ -1,7 +1,10 @@
 /* This is an example of using Sass, otherwise plain CSS works too*/
 @import './normalize.scss';
 
-$primary-background: tan;
+$primary-background:#634E60;
+$primary-font: 'Garamond', sans-serif;
+$accent-font:'Roboto Mono', monospace;
+$accent-color: #CAB8E2;
 
 * {
   box-sizing: border-box;
@@ -23,6 +26,8 @@ body {
 
 .quote{
   text-align: center;
+  font-family: $accent-font;
+  color: $accent-color;
 }
 .main {
   display: flex;
@@ -30,6 +35,7 @@ body {
   height: 60vh;
 }
 .aside {
+  font-family: $accent-font;
   height: 100%;
   width: 20%;
 }
@@ -45,6 +51,7 @@ body {
 }
 
 .container {
+  font-family: $primary-font;
   margin: 0 auto;
   height: 100%;
   width: 80%;

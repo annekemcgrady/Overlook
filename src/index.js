@@ -3,6 +3,7 @@
 
 // An example of how you import jQuery into a JS file if you use jQuery in that file
 import $ from 'jquery';
+import fetch from 'cross-fetch';
 // An example of how you tell webpack to use a CSS (SCSS) file
 import './css/base.scss';
 // An example of how you tell webpack to use an image (also need to link to it in the index.html)
@@ -10,18 +11,16 @@ import './images/turing-logo.png'
 import './images/overlook-grand.jpg'
 
 import domUpdates from './domUpdates';
+import Hotel from './Hotel';
 
+let hotel;
 let userData;
+
+$(document).ready(function() {
 
 fetch('https://fe-apps.herokuapp.com/api/v1/overlook/1903/users/users')
   .then(dataFile => dataFile.json())
   .then(dataFile => userData = dataFile.users);
-
-function timer() {
-    console.log(userData);
-}
-
-setTimeout(timer, 1000);
 
 let roomsData;
 fetch('https://fe-apps.herokuapp.com/api/v1/overlook/1903/rooms/rooms')
@@ -38,8 +37,19 @@ fetch('https://fe-apps.herokuapp.com/api/v1/overlook/1903/room-services/roomServ
     .then(dataFile => dataFile.json())
     .then(dataFile => roomServicesData = dataFile.roomServices);
 
-console.log("user data: ", userData)
 
+function timer() {
+  // console.log("booking data: ", bookingsData)
+  hotel = new Hotel("15/07/2019" ,bookingsData, roomServicesData)
+  domUpdates.displayAllTodayBookings(hotel.todayBookings)
+  domUpdates.displayPercentOccupied(hotel.todayBookings)
+  domUpdates.displayAllTodayOrders(hotel.todayOrders)
+  domUpdates.displayTotalSalesRoomServiceToday(hotel.todayOrderSalesTotal)
+  domUpdates.displayNumberAvailableRooms(hotel.todayBookings)
+  console.log(hotel)
+  }
+
+setTimeout(timer, 1000);
 
 let today = new Date();
 let dd = today.getDate();
@@ -55,8 +65,6 @@ if(mm<10)
 } 
 today = `${dd}/${mm}/${yyyy}`;
 console.log(today);
-
-$(document).ready(function(){
 	
 	$('ul.tabs li').click(function(){
 		var tab_id = $(this).attr('data-tab');
@@ -67,7 +75,6 @@ $(document).ready(function(){
 		$(this).addClass('current');
 		$("#"+tab_id).addClass('current');
   })
-  
   domUpdates.displayDate(today)
 
 })
