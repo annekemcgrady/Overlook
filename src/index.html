@@ -53,9 +53,18 @@
               </div>
               <div id="tab-3" class="tab-content rooms">
                 <h2>Today's bookings are: <ul class="main-bookings"></ul></h2>
+                <h2>The date with the most bookings is <span class="most-booked"></span></h2>
+                <h2>The date with the least bookings is <span class="least-booked"></span></h2>
+                <ul class="current-guest-bookings"></ul>
               </div>
               <div id="tab-4" class="tab-content orders">
                 <h2>Today's room service orders are: <ul class="main-orders"></ul></h2>
+                <form class="order-search-form">
+                    <input class="order-search-input" placeholder="Enter date in dd/mo/yyyy format"></input>
+                    <button type="button" class="order-search-button">SEARCH</button>
+                  </form>
+                <ul class="current-guest-orders"></ul>
+                <ul class ="date-orders"></ul>
               </div>
             </section>
     </main>

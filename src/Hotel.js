@@ -7,12 +7,14 @@ class Hotel {
     this.allUsers = allUsers;
     this.allBookings = allBookings;
     this.allOrders = allOrders;
-    this.todayBookings = this.roomsBookedByDate(date);
+    this.todayBookings = this.roomsBookedToday(date);
     this.todayOrders = this.ordersByDate(date);
     this.todayOrderSalesTotal = this.orderCostByDate(date);
+    this.mostBooked = this.findMostBookedDate();
+    this.leastBooked = this.findLeastBookedDate();
   }
 
-  roomsBookedByDate(date){
+  roomsBookedToday(date){
     return this.allBookings.filter(booking => booking.date === date).map(obj =>obj.roomNumber) 
   }
 

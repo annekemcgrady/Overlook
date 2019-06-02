@@ -10,7 +10,8 @@ import spies from 'chai-spies';
 chai.use(spies);
 
 chai.spy.on(domUpdates, [
-  'displayAllTodayBookings'
+  'displayAllTodayBookings',
+  'displayOrdersByDate'
 ], () => true);
 
 describe('Hotel', function() {
