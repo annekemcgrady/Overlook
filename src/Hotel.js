@@ -34,6 +34,32 @@ findCurrentGuestByName(currentName) {
   return this.allUsers.find(user => user.name.toUpperCase() === currentName.toUpperCase())
 }
 
+findMostBookedDate() {
+  let final = Object.values(this.allBookings).flat()
+  let final2 = final.reduce((acc,el) => {
+    if(!acc[el.date]) {
+      acc[el.date] = 1
+    } else {
+      acc[el.date]++
+    }
+  return acc
+  },{})
+  
+  return Object.keys(final2).shift()
+}
+
+findLeastBookedDate(){
+  let final = Object.values(this.allBookings).flat()
+  let final2 = final.reduce((acc,el) => {
+    if(!acc[el.date]) {
+      acc[el.date] = 1
+    } else {
+      acc[el.date]++
+    }
+    return acc
+    },{})
+    return Object.keys(final2).pop()
+}
 
 };
 
