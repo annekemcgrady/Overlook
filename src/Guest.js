@@ -40,6 +40,14 @@ calcTotalOrders() {
 return final
   }
 
+checkBookingByDate(givenDate) {
+if(!this.bookings.filter(el => el.date === givenDate).length) {
+  return false
+} else { 
+  return true
+  }
+}
+
 };
 
 

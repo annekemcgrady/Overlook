@@ -42,61 +42,91 @@ fetch('https://fe-apps.herokuapp.com/api/v1/overlook/1903/room-services/roomServ
 
 function timer() {
   // console.log("booking data: ", bookingsData)
-  hotel = new Hotel(today, userData, bookingsData, roomServicesData);
-  domUpdates.displayAllTodayBookings(hotel.todayBookings);
-  domUpdates.displayPercentOccupied(hotel.todayBookings);
-  domUpdates.displayAllTodayOrders(hotel.todayOrders);
+  hotel = new Hotel(today, userData, bookingsData, roomServicesData, roomsData);
   domUpdates.displayTotalSalesRoomServiceToday(hotel.todayOrderSalesTotal);
+  domUpdates.displayPercentOccupied(hotel.todayBookings);
+  if(hotel.todayBookings.length) {
+  domUpdates.displayAllTodayBookings(hotel.todayBookings);
+  } else { domUpdates.displayNoBookingsMsg()};
+  if(hotel.todayOrders.length) {
+  domUpdates.displayAllTodayOrders(hotel.todayOrders);
+  } else { domUpdates.displayNoOrdersMsg()};
   domUpdates.displayNumberAvailableRooms(hotel.todayBookings);
   domUpdates.displayMostBookedDate(hotel.mostBooked);
   domUpdates.displayLeastBookedDate(hotel.leastBooked);
 
   
   $(".guest-search-form").on('submit', function(e) {
-    e.preventDefault()
-    let inputValue = $(".guest-search-input").val()
-    let obj = hotel.findCurrentGuestByName(inputValue)
+    e.preventDefault();
+    let inputValue = $(".guest-search-input").val();
+    let obj = hotel.findCurrentGuestByName(inputValue);
     if(!obj) {
-      domUpdates.displayErrorMsg()
+      domUpdates.displayErrorMsg();
     } else {
-    currentGuest = new Guest(obj, bookingsData, roomServicesData)
+    currentGuest = new Guest(obj, bookingsData, roomServicesData);
     console.log(currentGuest)
-    $(".current-guest-bookings").html('')
-    $(".current-guest-orders").html('')
-    domUpdates.displayGuestName(currentGuest)
+    $(".current-guest-bookings").html('');
+    $(".current-guest-orders").html('');
+    domUpdates.displayGuestName(currentGuest);
     if (currentGuest.bookings.length) {
-    domUpdates.displayGuestBookingsHeader(currentGuest)
-    domUpdates.displayGuestBookings(currentGuest)
-    } else { domUpdates.displayGuestBookingsError()}
-    if(currentGuest.orders.length) {
-    domUpdates.displayGuestOrdersHeader(currentGuest)
-    domUpdates.displayGuestOrders(currentGuest)
-    domUpdates.displayGuestOrdersTotal(currentGuest)
-    } else {domUpdates.displayGuestOrdersError()}
+    domUpdates.displayGuestBookingsHeader(currentGuest);
+    domUpdates.displayGuestBookings(currentGuest);
+    } else { 
+      domUpdates.displayGuestBookingsError(); 
     }
-    $(".guest-search-input").val('')
+    if(currentGuest.orders.length) {
+    domUpdates.displayGuestOrdersHeader(currentGuest);
+    domUpdates.displayGuestOrders(currentGuest);
+    domUpdates.displayGuestOrdersTotal(currentGuest);
+    } else { domUpdates.displayGuestOrdersError();}
+    }
+    $(".guest-search-input").val('');
+  })
+
+  $(".guest-search-form").on('submit', function(e) {
+    e.preventDefault();
+    let hasBooking = currentGuest.checkBookingByDate(today.toString());
+     if(hasBooking === false) { 
+       domUpdates.addBookingForm();
+    };
   })
 
   $(".guest-create-form").on('submit', function(e) {
     e.preventDefault()
-    let inputValue = $(".guest-create-input").val()
+    let inputValue = $(".guest-create-input").val();
     let newObj = {id: 0, name: inputValue}
-    currentGuest = new Guest(newObj, bookingsData, roomServicesData)
+    currentGuest = new Guest(newObj, bookingsData, roomServicesData);
     console.log(currentGuest)
-    $(".current-guest-bookings").html('')
-    $(".current-guest-orders").html('')
-    domUpdates.displayGuestName(currentGuest)
-    $(".guest-create-input").val('')
+    $(".current-guest-bookings").html('');
+    $(".current-guest-orders").html('');
+    domUpdates.displayGuestName(currentGuest);
+    $(".guest-create-input").val('');
+    domUpdates.displayGuestBookingsError();
+    domUpdates.addBookingForm();
+    domUpdates.displayGuestOrdersError();
   })
 
-  
+  $(".order-search-form").on('submit', function(e) {
+    e.preventDefault()
+    let inputValue = $(".order-search-input").val();
+    let orders = hotel.ordersByDate(inputValue);
+    console.log(orders)
+    domUpdates.displayOrdersByDateHeader(inputValue);
+    domUpdates.displayOrdersByDate(orders);
+    $(".order-search-input").val('');
+  })
 
-
+  $(".make-booking").on('submit', function(e) {
+    e.preventDefault()
+    let inputValue = $(".make-booking-input").val();
+    console.log('MAKE BOOKING FORM SUBMITTING');
+    $(".make-booking-input").val('');
+  })
 
 };
 
 
-setTimeout(timer, 1000);
+setTimeout(timer, 200);
 
 let today = new Date();
 let dd = today.getDate();
@@ -122,5 +152,9 @@ today = `${dd}/${mm}/${yyyy}`;
 		$("#"+tab_id).addClass('current');
   })
   domUpdates.displayDate(today)
+
+  $('.reset-button').click(function() {
+    location.reload (true);
+  });
 
 })

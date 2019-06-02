@@ -2,11 +2,12 @@ import domUpdates from './domUpdates';
 
 
 class Hotel {
-  constructor(date, allUsers, allBookings, allOrders) {
+  constructor(date, allUsers, allBookings, allOrders, allRooms) {
     this.date = date;
     this.allUsers = allUsers;
     this.allBookings = allBookings;
     this.allOrders = allOrders;
+    this.allRooms = allRooms;
     this.todayBookings = this.roomsBookedToday(date);
     this.todayOrders = this.ordersByDate(date);
     this.todayOrderSalesTotal = this.orderCostByDate(date);
@@ -61,6 +62,11 @@ findLeastBookedDate(){
     return acc
     },{})
     return Object.keys(final2).pop()
+}
+
+findAvailableRoomsByDate(date) {
+  let booked = this.roomsBookedToday(date);
+  return Object.values(this.allRooms).filter(el => !booked.includes(el.number));
 }
 
 };

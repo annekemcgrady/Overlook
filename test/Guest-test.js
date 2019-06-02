@@ -71,7 +71,10 @@ it('should be able to make a room service order', function(){
 
 it('should calculate total of all room service charges ever', function(){
 expect(guest.calcTotalOrders()).to.equal(28.64)
-
 })
+
+it('should check for its bookings by date ', function(){
+  expect(guest.checkBookingByDate('31/08/2019')).to.equal(true)
+  })
 
 });

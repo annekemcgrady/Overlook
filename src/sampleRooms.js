@@ -1,4 +1,4 @@
-const sampleRooms {
+const sampleRooms = {
 rooms: [
 {
 number: 1,
