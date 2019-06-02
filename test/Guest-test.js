@@ -48,6 +48,12 @@ it('should keep track of its own room service orders', function() {
     date: "21/10/2019",
     food: "Generic Plastic Sandwich",
     totalCost: 9.48
+    },
+   {
+    userID: 5,
+    date: "17/12/2019",
+    food: "Ergonomic Fresh Sandwich",
+    totalCost: 19.16,
     }])
 })
 
@@ -58,9 +64,14 @@ it('should be able to make a booking', function(){
 })
 
 it('should be able to make a room service order', function(){
-  expect(guest.orders.length).to.equal(1)
-  guest.makeOrder(this.id, today, ["food"])
   expect(guest.orders.length).to.equal(2)
+  guest.makeOrder(this.id, today, ["food"])
+  expect(guest.orders.length).to.equal(3)
+})
+
+it('should calculate total of all room service charges ever', function(){
+expect(guest.calcTotalOrders()).to.equal(28.64)
+
 })
 
 });

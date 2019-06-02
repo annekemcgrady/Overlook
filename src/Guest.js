@@ -12,6 +12,7 @@ class Guest {
     this.allOrders = dataO;
     this.bookings = this.pullAllBookings(this.id);
     this.orders = this.pullAllOrders(this.id)
+    this.ordersTotalCost = this.calcTotalOrders()
 }
 
 pullAllBookings(num) {
@@ -31,6 +32,13 @@ makeOrder(id, date, food) {
   let order = new Order(id, date, food)
   this.orders.push(order)
 }
+
+calcTotalOrders() {
+ let final = this.orders.reduce((acc,order) => {
+   return acc += order.totalCost
+   },0)
+return final
+  }
 
 };
 

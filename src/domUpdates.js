@@ -10,9 +10,13 @@ const domUpdates = {
   },
 
   displayAllTodayBookings(bookings) {
+    if(bookings.length > 0) {
     bookings.forEach(booking => {
     $(".main-bookings").append(`<li>Room Number: ${booking}</li>`)
     })
+  } else {
+    $(".main-bookings").append(`<li>THERE ARE NO BOOKING FOR TODAY</li>`) 
+  }
   },
    
   displayPercentOccupied(bookings) {
@@ -33,20 +37,62 @@ const domUpdates = {
       $(".main-available-rooms").text(200-bookings.length)
     },
 
-    displayGuestName(guest) {
-      $(".guest-name").text(guest.name)
+    displayMostBookedDate(num) {
+      $('.most-booked').text(num)
     },
+
+    displayLeastBookedDate(num) {
+      $('.least-booked').text(num)
+    },
+
+    displayGuestName(guest) {
+      $(".guest-name").text(guest.name.toUpperCase())
+    },
+
+    displayGuestBookingsHeader(guest) {
+      $(".current-guest-bookings").append(`<li> Bookings for ${guest.name}:</li>`)
+  },
 
     displayGuestBookings(guest) {
       guest.bookings.forEach(booking => {
       $(".current-guest-bookings").append(`<li>${booking.date} in Room ${booking.roomNumber}</li>`)
       })
     },
+    displayGuestBookingsError() { 
+      $(".current-guest-bookings").append(`<li class="booking-error">This customer has no current bookings</li>`)
+    },
 
     displayErrorMsg() {
       alert('No guest by that name')
+    },
+
+
+    displayGuestOrdersHeader(guest) {
+      $(".current-guest-orders").append(`<li> Room Service Orders For ${guest.name}:</li>`)
+  },
+
+    displayGuestOrders(guest) {
+      guest.orders.forEach(order => {
+      $(".current-guest-orders").append(`<li>${order.date} ${order.food} ${order.totalCost}</li>`)
+      })
+    },
+
+    displayGuestOrdersError() {
+      $(".current-guest-orders").append(`<li class="order-error">This customer has no current orders</li>`)
+    },
+
+    displayGuestOrdersTotal(guest) {
+      $(".current-guest-orders").append(`<li class="order-total">Total for Guest: $ ${guest.ordersTotalCost}</li>`)
+    },
+
+
+
+    displayOrdersByDate(info) {
+      info.forEach(order => {
+        $(".date-orders").append(`<li>Room Service: ${order.food} $${order.totalCost}</li>`)
+        })
     }
-   
+
    };
   
 
@@ -61,17 +107,17 @@ const domUpdates = {
 
   //Display customer name once selected - DONE
   //Search input for customer by name - DONE
-  //button to search and make enter work
-  //input to create a new customer 
+  //button to search and make enter work - DONE
+  //input to create a new customer - DONE
   //Update all tabs to include info for that user
 
   //ROOMS
   //GENERAL
-  //Display Most popular booking date
-  //Display date with most rooms available
+  //Display Most popular booking date - DONE
+  //Display date with most rooms available - DONE
 
   //ROOMS BY CUSTOMER
-//Display summary of all past and current bookings
+//Display summary of all past and current bookings -DONE
 //Book a room button
 //Drop down menu with all available room types
 //if not available display room types that are available
@@ -82,9 +128,9 @@ const domUpdates = {
 //Search input for all orders by DATE
 
 //BY CUSTOMER
-//breakdown of dates and orders for customer
-//total spent by date
-//total spent for all days
+//breakdown of dates and orders for customer - DONE
+//total spent by date -
+//total spent for all days- DONE
 //error if no orders found
 
 
