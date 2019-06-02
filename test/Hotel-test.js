@@ -51,8 +51,16 @@ describe('Hotel', function() {
     expect(hotel.todayOrderSalesTotal).to.equal(5.86)
   });
 
-  it('should find a user by name and return the user object', function(){
+  it('should find a user by name and return the user object', function() {
     expect(hotel.findCurrentGuestByName("Reginald Schaden")).to.eql({id: 5, name: "Reginald Schaden"})
+  })
+
+  it('should find the date with the most bookings', function() {
+    expect(hotel.findMostBookedDate()).to.eql('21/08/2019')
+  })
+
+  it('should find the date with the least bookings', function() {
+    expect(hotel.findLeastBookedDate()).to.eql('22/09/2019')
   })
 
 });

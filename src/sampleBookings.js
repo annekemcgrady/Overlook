@@ -7,7 +7,7 @@ const sampleBookings = {
   },
   {
   userID: 43,
-  date: "05/10/2019",
+  date: "21/08/2019",
   roomNumber: 108
   },
   {
