@@ -3,12 +3,12 @@ const sampleBookings = {
   {
   userID: 78,
   date: "21/08/2019",
-  roomNumber: 143
+  roomNumber: 1
   },
   {
   userID: 43,
   date: "21/08/2019",
-  roomNumber: 108
+  roomNumber: 10
   },
   {
   userID: 5,

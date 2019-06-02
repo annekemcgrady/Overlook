@@ -50,7 +50,7 @@ const domUpdates = {
     },
 
     displayGuestBookingsHeader(guest) {
-      $(".current-guest-bookings").append(`<li> Bookings for ${guest.name}:</li>`)
+      $(".current-guest-bookings").append(`<li class="list-header"> Bookings for ${guest.name}:</li>`)
   },
 
     displayGuestBookings(guest) {
@@ -63,12 +63,12 @@ const domUpdates = {
     },
 
     displayErrorMsg() {
-      alert('No guest by that name')
+      $(".guest-name").text('No guest by that name')
     },
 
 
     displayGuestOrdersHeader(guest) {
-      $(".current-guest-orders").append(`<li> Room Service Orders For ${guest.name}:</li>`)
+      $(".current-guest-orders").append(`<li class="list-header"> Room Service Orders For ${guest.name}:</li>`)
   },
 
     displayGuestOrders(guest) {
@@ -85,12 +85,27 @@ const domUpdates = {
       $(".current-guest-orders").append(`<li class="order-total">Total for Guest: $ ${guest.ordersTotalCost}</li>`)
     },
 
-
+    displayOrdersByDateHeader(info) {
+      $(".date-orders").append(`<li class="list-header">Room Service Orders for ${info}:</li>`)
+    },
 
     displayOrdersByDate(info) {
       info.forEach(order => {
         $(".date-orders").append(`<li>Room Service: ${order.food} $${order.totalCost}</li>`)
         })
+    },
+
+    displayNoBookingsMsg() {
+      $(".main-bookings").append("<li>NO BOOKINGS TODAY</li>")
+    },
+
+    displayNoOrdersMsg() {
+      $(".main-orders").append("<li>NO ORDERS TODAY</li>")
+    },
+
+    addBookingForm() {
+      console.log('IN ADD BOOKING FORM');
+      $(".new-booking").append("<form class='make-booking'><label for='make-booking'>MAKE NEW BOOKING</label><input type='text' id='make-booking' class='make-booking-input' placeholder='Enter date dd/mm/yyy'></input><button type='submit'>SUBMIT</button></form>")
     }
 
    };

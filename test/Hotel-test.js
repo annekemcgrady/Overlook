@@ -3,6 +3,7 @@ import domUpdates from '../src/domUpdates'
 import sampleUsers from '../src/sampleUsers'
 import sampleBookings from '../src/sampleBookings'
 import sampleRoomService from '../src/sampleRoomService'
+import sampleRooms from '../src/sampleRooms'
 var chai = require('chai');
 var expect = chai.expect;
 
@@ -11,7 +12,8 @@ chai.use(spies);
 
 chai.spy.on(domUpdates, [
   'displayAllTodayBookings',
-  'displayOrdersByDate'
+  'displayOrdersByDate',
+  'addBookingForm'
 ], () => true);
 
 describe('Hotel', function() {
@@ -19,10 +21,11 @@ describe('Hotel', function() {
   let usersData = sampleUsers.users;
   let bookingsData = sampleBookings.bookings
   let orderData = sampleRoomService.roomServices
+  let roomsData = sampleRooms.rooms
   let today = "17/11/2019";
   
   beforeEach(function() {
-    hotel = new Hotel(today, usersData, bookingsData, orderData)
+    hotel = new Hotel(today, usersData, bookingsData, orderData, roomsData)
   }) 
 
   it('should be a function', function() {
@@ -38,7 +41,7 @@ describe('Hotel', function() {
   });
 
   it('should select all room service orders for a date', function() {
-    hotel = new Hotel("19/07/2019", usersData, bookingsData, orderData)
+    hotel = new Hotel("19/07/2019", usersData, bookingsData, orderData, roomsData)
     expect(hotel.todayOrders).to.eql([
         { "date": "19/07/2019",
         "food": "Rustic Wooden Sandwich",
@@ -48,7 +51,7 @@ describe('Hotel', function() {
   });
 
   it('should total sales of all orders for a date', function() {
-    hotel = new Hotel("19/07/2019", usersData, bookingsData, orderData)
+    hotel = new Hotel("19/07/2019", usersData, bookingsData, orderData, roomsData)
     expect(hotel.todayOrderSalesTotal).to.equal(5.86)
   });
 
@@ -62,6 +65,11 @@ describe('Hotel', function() {
 
   it('should find the date with the least bookings', function() {
     expect(hotel.findLeastBookedDate()).to.eql('22/09/2019')
+  })
+
+  it('should return a list of available rooms by date', function() {
+    expect(hotel.roomsBookedToday('21/08/2019')).to.eql([1, 10])
+    expect(hotel.findAvailableRoomsByDate("21/08/2019").length).to.equal(8)
   })
 
 });
