@@ -21,7 +21,23 @@ body {
   // background-size: cover;
 	background-repeat: no-repeat;
   background-position: center;
+  display: flex;
+  justify-content: space-between;
   height: 40vh;
+  padding: 5px;
+}
+
+.forecast {
+  margin-left: 0;
+  align-self: flex-start;
+  font-family: $accent-font;
+  font-size: 1em;
+  color: $accent-color;
+}
+
+.horoscope {
+  @extend.forecast;
+  margin-right: 0;
 }
 
 .quote {
@@ -32,10 +48,14 @@ body {
   color: $accent-color;
   margin-bottom: 5px;
 }
-.main {
+.real-main {
   display: flex;
   flex-direction: space-between;
   height: 60vh;
+  li {
+    list-style: none;
+    font-size: 1em;
+  }
 }
 .aside {
   font-family: $accent-font;
@@ -43,6 +63,9 @@ body {
   color: $accent-color;
   height: 100%;
   width: 20%;
+    li{
+      list-style: circle;
+    }
 }
 .to-do-form {
   display: flex;
@@ -68,15 +91,14 @@ body {
 }
 
 ul.tabs {
-  
-  font-size: 1em;
+  font-size: 1.2em;
   margin: 0px;
   padding: 0px;
   list-style: none;
 }
 ul.tabs li {
   font-family: $primary-font;
-  font-size: 1.2em;
+  font-size: 1em;
   background: none;
   color: $accent-color;
   display: inline-block;
@@ -103,12 +125,35 @@ form {
   margin-top: 20px;
 }
 
+input {
+  height: 40px;
+  width: 200px;
+}
+button {
+  background-color: $primary-background;
+  margin: 10px;
+  height: 40px;
+  width: 100px;
+}
+
+.room-list-container {
+    p {
+      height: 40px;
+      color: $primary-background;
+      font-size: 1em;
+      cursor: pointer;
+    }
+}
+
+.rooms {
+  overflow: scroll;
+}
 
 .current-guest-bookings,
 .current-guest-orders {
   margin-top: 20px;
 }
-.list-header{
+.list-header {
   font-size: 1.5em;
 }
 

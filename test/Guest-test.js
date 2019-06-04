@@ -65,7 +65,7 @@ it('should be able to make a booking', function(){
 
 it('should be able to make a room service order', function(){
   expect(guest.orders.length).to.equal(2)
-  guest.makeOrder(this.id, today, ["food"])
+  guest.makeOrder(guest.id, today, "food")
   expect(guest.orders.length).to.equal(3)
 })
 

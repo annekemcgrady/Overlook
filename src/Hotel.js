@@ -10,6 +10,7 @@ class Hotel {
     this.allRooms = allRooms;
     this.todayBookings = this.roomsBookedToday(date);
     this.todayOrders = this.ordersByDate(date);
+    this.totalSales = this.totalOfSales(date)
     this.todayOrderSalesTotal = this.orderCostByDate(date);
     this.mostBooked = this.findMostBookedDate();
     this.leastBooked = this.findLeastBookedDate();
@@ -28,7 +29,6 @@ class Hotel {
     if (order.date === date) {
       acc += order.totalCost
     }
-
 return acc
 },0)
 }
@@ -67,7 +67,24 @@ findLeastBookedDate(){
 findAvailableRoomsByDate(date) {
   let booked = this.roomsBookedToday(date);
   return Object.values(this.allRooms).filter(el => !booked.includes(el.number));
-}
+  }
+
+  filterAvailableRoomByType(date,type) {
+   return this.findAvailableRoomsByDate(date).filter(room => room.roomType === type)
+  }
+
+  totalOfSales(date) {
+  let orderSales = this.orderCostByDate(date)
+   let roomSales = this.allRooms.reduce((acc, room) => {
+      this.todayBookings.forEach(booking => {
+        if(room.number === booking) {
+          acc += room.costPerNight
+        }
+      })
+      return acc
+   },0)
+   return roomSales + orderSales
+   }
 
 };
 

@@ -23,8 +23,12 @@ const domUpdates = {
     $(".main-percent").text((bookings.length/200)*100)
     },
 
+    displayAmountTotalSales(sales) {
+      $(".main-sales").text(sales)
+    },
+
     displayTotalSalesRoomServiceToday(orderTotal) {
-      $(".main-sales").text(orderTotal)
+      $(".main-order-sales").text(orderTotal)
     },
 
     displayAllTodayOrders(orders){
@@ -66,7 +70,6 @@ const domUpdates = {
       $(".guest-name").text('No guest by that name')
     },
 
-
     displayGuestOrdersHeader(guest) {
       $(".current-guest-orders").append(`<li class="list-header"> Room Service Orders For ${guest.name}:</li>`)
   },
@@ -104,9 +107,18 @@ const domUpdates = {
     },
 
     addBookingForm() {
-      console.log('IN ADD BOOKING FORM');
-      $(".new-booking").append("<form class='make-booking'><label for='make-booking'>MAKE NEW BOOKING</label><input type='text' id='make-booking' class='make-booking-input' placeholder='Enter date dd/mm/yyy'></input><button type='submit'>SUBMIT</button></form>")
-    }
+      $(".new-booking").append("<button class='make-booking' type='button'>MAKE NEW BOOKING</button>")
+    },
+
+    displayBookingMenu(){
+      $(".new-booking").append("<div class='room-filter'><h3>Please select a room type</h3><button class='r-suite'>Residential Suite</button><button class='j-suite'>Junior Suite</button><button class='suite'>Suite</button><button class='single'>Single</button><div class='room-list-container'><div class='room-list'></ul></div></div>")
+    },
+
+    displayRooms(info) {
+      info.forEach(room => {
+      $(".room-list").append(`<p>Type: ${room.roomType} Room Number: ${room.number} Beds: ${room.numBeds} Bed size: ${room.bedSize} Bidet: ${room.bidet} <button type=button' class='new-book-selection num-${room.number}'>Book Now</button></p>`) 
+    })
+  }
 
    };
   
@@ -124,7 +136,7 @@ const domUpdates = {
   //Search input for customer by name - DONE
   //button to search and make enter work - DONE
   //input to create a new customer - DONE
-  //Update all tabs to include info for that user
+  //Update all tabs to include info for that user - DONE
 
   //ROOMS
   //GENERAL
@@ -133,20 +145,20 @@ const domUpdates = {
 
   //ROOMS BY CUSTOMER
 //Display summary of all past and current bookings -DONE
-//Book a room button
-//Drop down menu with all available room types
+//Book a room button - DONE
+//Drop down menu with all available room types - DONE
 //if not available display room types that are available
 //Once booked - Order room service button
 
 // ORDERS
 //GENERAL
-//Search input for all orders by DATE
+//Search input for all orders by DATE - DONE
 
 //BY CUSTOMER
 //breakdown of dates and orders for customer - DONE
-//total spent by date -
+//total spent by date - ??
 //total spent for all days- DONE
-//error if no orders found
+//error if no orders found - DONE
 
 
 

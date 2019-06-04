@@ -43,6 +43,7 @@ fetch('https://fe-apps.herokuapp.com/api/v1/overlook/1903/room-services/roomServ
 function timer() {
   // console.log("booking data: ", bookingsData)
   hotel = new Hotel(today, userData, bookingsData, roomServicesData, roomsData);
+  domUpdates.displayAmountTotalSales(hotel.totalSales)
   domUpdates.displayTotalSalesRoomServiceToday(hotel.todayOrderSalesTotal);
   domUpdates.displayPercentOccupied(hotel.todayBookings);
   if(hotel.todayBookings.length) {
@@ -65,6 +66,8 @@ function timer() {
     } else {
     currentGuest = new Guest(obj, bookingsData, roomServicesData);
     console.log(currentGuest)
+    $(".rooms-main-content").hide();
+    $(".orders-main-content").hide();
     $(".current-guest-bookings").html('');
     $(".current-guest-orders").html('');
     domUpdates.displayGuestName(currentGuest);
@@ -99,6 +102,8 @@ function timer() {
     console.log(currentGuest)
     $(".current-guest-bookings").html('');
     $(".current-guest-orders").html('');
+    $(".rooms-main-content").hide();
+    $(".orders-main-content").hide();
     domUpdates.displayGuestName(currentGuest);
     $(".guest-create-input").val('');
     domUpdates.displayGuestBookingsError();
@@ -116,17 +121,59 @@ function timer() {
     $(".order-search-input").val('');
   })
 
-  $(".make-booking").on('submit', function(e) {
+  $(".rooms").on('click', function(e) {
+    if(e.target.className === 'make-booking') {
     e.preventDefault()
-    let inputValue = $(".make-booking-input").val();
-    console.log('MAKE BOOKING FORM SUBMITTING');
-    $(".make-booking-input").val('');
+    domUpdates.displayBookingMenu() 
+  }
   })
+
+  $(".rooms").on('click', function(e) {
+  if(e.target.className === 'r-suite') {
+  e.preventDefault()
+  let info = hotel.filterAvailableRoomByType(today,"residential suite")
+  $(".room-list").empty()
+  domUpdates.displayRooms(info)
+  }
+})
+
+$(".rooms").on('click', function(e) {
+  if(e.target.className === 'j-suite') {
+  e.preventDefault()
+  let info = hotel.filterAvailableRoomByType(today,"junior suite")
+  $(".room-list").empty()
+  domUpdates.displayRooms(info)
+  }
+})
+
+$(".rooms").on('click', function(e) {
+  if(e.target.className === 'suite') {
+  e.preventDefault()
+  let info = hotel.filterAvailableRoomByType(today,"suite")
+  $(".room-list").empty()
+  domUpdates.displayRooms(info)
+  }
+})
+
+$(".rooms").on('click', function(e) {
+  if(e.target.className === 'single') {
+  e.preventDefault()
+  let info = hotel.filterAvailableRoomByType(today,"single room")
+  $(".room-list").empty()
+  domUpdates.displayRooms(info)
+  }
+})
+
+$(".rooms").on('click', function(e) {
+  e.preventDefault()
+  console.log(e.target)
+})
+
 
 };
 
 
-setTimeout(timer, 200);
+setTimeout(timer, 500);
 
 let today = new Date();
 let dd = today.getDate();
