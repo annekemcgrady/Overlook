@@ -1,6 +1,5 @@
 import domUpdates from './domUpdates';
 
-
 class Hotel {
   constructor(date, allUsers, allBookings, allOrders, allRooms) {
     this.date = date;
@@ -33,11 +32,11 @@ return acc
 },0)
 }
 
-findCurrentGuestByName(currentName) {
-  return this.allUsers.find(user => user.name.toUpperCase() === currentName.toUpperCase())
+  findCurrentGuestByName(currentName) {
+    return this.allUsers.find(user => user.name.toUpperCase() === currentName.toUpperCase())
 }
 
-findMostBookedDate() {
+  findMostBookedDate() {
   let final = Object.values(this.allBookings).flat()
   let final2 = final.reduce((acc,el) => {
     if(!acc[el.date]) {

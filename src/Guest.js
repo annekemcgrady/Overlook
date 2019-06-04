@@ -26,7 +26,6 @@ pullAllOrders(num) {
 makeBooking(id, date, room) {
   let booking = new Booking(id, date, room)
   this.bookings.push(booking)
-  console.log(this.bookings)
 }
 
 makeOrder(id, date, food, cost) {

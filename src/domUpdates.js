@@ -48,8 +48,14 @@ const domUpdates = {
     displayLeastBookedDate(num) {
       $('.least-booked').text(num)
     },
+//dO I NEED THIS ONE?
+    // displayGuestName(guest) {
+    //   $(".guest-name").text(guest.name.toUpperCase())
+    // },
 
-    displayGuestName(guest) {
+    displayCurrentGuestOnAllPages(guest) {
+      $(".customer-orders-container").prepend("<h3 class='current-guess'>Current Guest: <span class='guest-name'></span></h3>")
+      $(".customer-bookings-container").prepend("<h3 class='current-guess'>Current Guest: <span class='guest-name'></span></h3>")
       $(".guest-name").text(guest.name.toUpperCase())
     },
 
@@ -119,6 +125,12 @@ const domUpdates = {
       $(".room-list").append(`<p>Type: ${room.roomType.toUpperCase()} Room Number: ${room.number} Beds: ${room.numBeds} Bed size: ${room.bedSize.toUpperCase()} Bidet: ${room.bidet} <button type='button' class='booking-button' id='${room.number}'>Book</button></p>`) 
     })
   },
+
+  displayRoomsMain(info) {
+    info.forEach(room => {
+    $(".search-rooms-by-date").append(`<p>Type: ${room.roomType.toUpperCase()} Room Number: ${room.number} Beds: ${room.numBeds} Bed size: ${room.bedSize.toUpperCase()} Bidet: ${room.bidet}</p>`) 
+  })
+},
 
   displayRoomServiceOrderMenu() {
     $(".rooms").append("<div class='dropdown'><button class='dropbtn'>ROOM SERVICE</button><div class='dropdown-content'><h4 class='bloody-mary'>Bloody Mary $4.99</h4><h4 class='sandwich'>Sandwich $10.99</h4></div></div>")
