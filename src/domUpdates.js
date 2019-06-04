@@ -116,7 +116,7 @@ const domUpdates = {
 
     displayRooms(info) {
       info.forEach(room => {
-      $(".room-list").append(`<p>Type: ${room.roomType} Room Number: ${room.number} Beds: ${room.numBeds} Bed size: ${room.bedSize} Bidet: ${room.bidet} <button type=button' class='new-book-selection num-${room.number}'>Book Now</button></p>`) 
+      $(".room-list").append(`<p>Type: ${room.roomType.toUpperCase()} Room Number: ${room.number} Beds: ${room.numBeds} Bed size: ${room.bedSize.toUpperCase()} Bidet: ${room.bidet} <button type=button' class='new-book-button ${room.number}'>Book</button></p>`) 
     })
   }
 

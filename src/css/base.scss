@@ -2,9 +2,10 @@
 @import './normalize.scss';
 
 $primary-background:#634E60;
-$primary-font: 'Garamond', sans-serif;
-$accent-font:'Roboto Mono', monospace;
+$accent-font: 'Special Elite', cursive;
 $accent-color: #CAB8E2;
+$logo-font: 'Special Elite', cursive;
+$primary-font:'Roboto Mono', monospace;
 
 * {
   box-sizing: border-box;
@@ -16,28 +17,67 @@ body {
   background-color: $primary-background;
 }
 
+//Styling for page header
 .header {
   background-image:linear-gradient( rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1) ), url('../images/overlook-grand.jpg');
-  // background-size: cover;
 	background-repeat: no-repeat;
   background-position: center;
   display: flex;
   justify-content: space-between;
   height: 40vh;
-  padding: 5px;
+  padding-left: 10px;
+  padding-right: 10px;
 }
 
 .forecast {
+  display: flex;
+  flex-wrap: wrap;
+  font-size: .5em;
+  border: 2px double $accent-color;
+  padding: 5px;
   margin-left: 0;
   align-self: flex-start;
   font-family: $accent-font;
   font-size: 1em;
   color: $accent-color;
+  height: 250px;
+  width: 250px;
+    div { 
+      border: 2px solid $accent-color;
+      height: 95%;
+      width: 95%;
+      padding: 5px;
+    }
+}
+
+.temp {
+  font-size: 32px;
+  font-family: $logo-font;
+}
+
+.logo {
+  display: none;
+  border: 5px solid $accent-color;
+  color: $accent-color;
+  font-family: $logo-font;
+  font-size: 14em;
+  text-align: center;
+  width: 200px;
+  height: 35vh;
+    div { 
+      border: 5px solid $accent-color;
+      height: 94%;
+      width: 94%;
+      margin: 5px;
+    }
 }
 
 .horoscope {
   @extend.forecast;
   margin-right: 0;
+}
+.horo-text {
+  font-size: .7em;
 }
 
 .quote {
@@ -48,6 +88,8 @@ body {
   color: $accent-color;
   margin-bottom: 5px;
 }
+
+//Styling for main page area and aside 
 .real-main {
   display: flex;
   flex-direction: space-between;
@@ -65,6 +107,7 @@ body {
   width: 20%;
     li{
       list-style: circle;
+      margin: 5px;
     }
 }
 .to-do-form {
@@ -78,12 +121,19 @@ body {
   height: 30px;
 }
 
+//Styling for tabbed content 
 .container {
   font-family: $primary-font;
   font-size: 0.9em;
   margin: 0 auto;
   height: 100%;
   width: 80%;
+}
+
+#tab-1, #tab-3, #tab-4 {
+  h2 {
+    margin: 10px;
+  }
 }
 
 .tab-content {
@@ -131,6 +181,7 @@ input {
 }
 button {
   background-color: $primary-background;
+  color: $accent-color;
   margin: 10px;
   height: 40px;
   width: 100px;
@@ -157,6 +208,21 @@ button {
   font-size: 1.5em;
 }
 
+.new-book-button {
+  width: 60px;
+  height: 30px;
+  color: $accent-color;
+}
+
+//Media queries
+@media only screen and (max-width: 1084px) {
+  .forecast,
+  .horoscope {
+    display: none;
+  }
+
+}
+
 @media only screen and (max-width: 600px) {
   .aside {
     display: none;
@@ -168,8 +234,10 @@ button {
 
   .header {
     background-image: none;
-
   }
 
+  .logo {
+    display: inline-block;
+  }
 
 }

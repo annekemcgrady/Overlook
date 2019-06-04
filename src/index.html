@@ -4,12 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="https://fonts.googleapis.com/css?family=Roboto+Mono&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Special+Elite&display=swap" rel="stylesheet">
     <title>Overlook | Welcome</title>
   </head>
   <body>
     <header class="header">
-      <section class="forecast">Today's<br>Temperature: <br> -15 F</section>
-      <section class="horoscope">Your Daily Horoscope: </section>
+      <section class="forecast"><div>Today's Temperature: <span class="temp">-15 F</span></div></section>
+      <div class="logo"><div>O</div></div>
+      <section class="horoscope"><div>Your Daily Horoscope: <span class="horo-text">Your love life will undergo evolution based on your own decisions. <br> Think well before you go through any fateful changes in your life. Do not ignore the opinion or advice of people around you. <br> On a professional level, the year only raises serious problems for resolution of lingering business challenges.</span>
+      </div></section>
       <!-- <img src="/images/turing-logo.png" alt="turing logo" height="100px" width="100px"> -->
     </header>
     <div class="quote">Quote Of The Day: "All work and no play makes Jack a dull boy" - Anonymous</div>
@@ -68,7 +71,7 @@
                   <h2>Today's room service orders are: <ul class="main-orders"></ul></h2>
                   <h2>Total cost of room service orders for today is $<span class="main-order-sales"></span></h2>
                 <form class="order-search-form">
-                  <input class="order-search-input" placeholder="Enter date in dd/mo/yyyy format"></input>
+                  <input class="order-search-input" placeholder="Enter date dd/mo/yyyy"></input>
                   <button type="submit" class="order-search-button">SEARCH</button>
                   </form>
                 </div>

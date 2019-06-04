@@ -77,4 +77,10 @@ it('should check for its bookings by date ', function(){
   expect(guest.checkBookingByDate('31/08/2019')).to.equal(true)
   })
 
+  it('should be able to cancel a booking', function(){
+    expect(guest.bookings).to.eql([{ userID: 5, date: '31/08/2019', roomNumber: 8 }])
+    guest.deleteBooking('31/08/2019', 8)
+    expect(guest.bookings).to.eql([])
+  })
+
 });
