@@ -1,8 +1,5 @@
-import Hotel from './Hotel'; 
 import Booking from './Booking';
 import Order from './Order';
-import domUpdates from './domUpdates';
-
 
 class Guest {
   constructor(obj, dataB, dataO) { 
@@ -55,9 +52,6 @@ deleteBooking(date,room) {
 }
 
 };
-
-
-
 
 
 

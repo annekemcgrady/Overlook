@@ -80,6 +80,7 @@ describe('Hotel', function() {
   it('should filter available rooms for a date by room type', function() {
     expect(hotel.filterAvailableRoomByType("21/08/2019", "residential suite").length).to.equal(2)
   })
+  
 
 });
 

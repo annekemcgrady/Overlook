@@ -51,7 +51,7 @@ body {
 }
 
 .temp {
-  font-size: 32px;
+  font-size: 72px;
   font-family: $logo-font;
 }
 
@@ -156,7 +156,7 @@ ul.tabs li {
   cursor: pointer;
 }
 
-ul.tabs li.current{
+ul.tabs li.current {
   background: #ededed;
   color: #222;
 }
@@ -214,6 +214,12 @@ button {
   color: $accent-color;
 }
 
+.room-div {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
 //Dropdown Button 
 .dropbtn {
   background-color:$primary-background;
@@ -256,7 +262,18 @@ button {
   .horoscope {
     display: none;
   }
+}
 
+@media only screen and (max-width: 1000px) {
+  .rooms,
+  .search-rooms-by-date {
+    font-size: .6em;
+    button { 
+      width: 40px;
+      font-size: .5em;
+    }
+
+  }
 }
 
 @media only screen and (max-width: 600px) {
