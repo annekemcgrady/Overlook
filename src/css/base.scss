@@ -104,6 +104,7 @@ body {
   font-size: 1.2em;
   color: $accent-color;
   height: 100%;
+  padding-left: 5px;
   width: 20%;
     li{
       list-style: circle;
@@ -179,6 +180,7 @@ input {
   height: 40px;
   width: 200px;
 }
+
 button {
   background-color: $primary-background;
   color: $accent-color;
@@ -257,7 +259,7 @@ button {
 .dropdown:hover .dropbtn {background-color: $accent-color; color: $primary-background;}
 
 //Media queries
-@media only screen and (max-width: 1200px) {
+@media only screen and (max-width: 1288px) {
   .forecast,
   .horoscope {
     display: none;
@@ -267,16 +269,23 @@ button {
 @media only screen and (max-width: 1000px) {
   .rooms,
   .search-rooms-by-date {
-    font-size: .6em;
+    font-size: .8em;
     button { 
-      width: 40px;
-      font-size: .5em;
+      width: 70px;
+      font-size: .6em;
     }
+  }
 
+  .aside { 
+    font-size: .8em;
+    input,
+    button {
+      width: 80%;
+    }
   }
 }
 
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 700px) {
   .aside {
     display: none;
   }
