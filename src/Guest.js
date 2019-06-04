@@ -29,17 +29,15 @@ makeBooking(id, date, room) {
   console.log(this.bookings)
 }
 
-makeOrder(id, date, food) {
-  let order = new Order(id, date, food)
+makeOrder(id, date, food, cost) {
+  let order = new Order(id, date, food, cost)
   this.orders.push(order)
-  console.log(this.orders)
 }
 
 calcTotalOrders() {
- let final = this.orders.reduce((acc,order) => {
+ this.ordersTotalCost = this.orders.reduce((acc,order) => {
    return acc += order.totalCost
    },0)
-return final
   }
 
 checkBookingByDate(givenDate) {
