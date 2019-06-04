@@ -111,7 +111,7 @@ const domUpdates = {
     },
 
     displayBookingMenu(){
-      $(".new-booking").append("<div class='room-filter'><button class='r-suite'>Residential Suite</button><button class='j-suite'>Junior Suite</button><button class='suite'>Suite</button><button class='single'>Single</button><div class='room-list-container'><div class='room-list'></ul></div></div>")
+      $(".new-booking").append("<div class='room-filter'><button class='r-suite'>Res. Suite</button><button class='j-suite'>Junior Suite</button><button class='suite'>Suite</button><button class='single'>Single</button><div class='room-list-container'><div class='room-list'></ul></div></div>")
     },
 
     displayRooms(info) {
