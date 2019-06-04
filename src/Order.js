@@ -1,6 +1,3 @@
-import Hotel from './Hotel'
-import Booking from './Booking'
-import domUpdates from './domUpdates';
 
 class Order {
   constructor (id, date, food, cost) {

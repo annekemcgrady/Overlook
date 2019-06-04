@@ -174,11 +174,16 @@ $(".rooms").on('click', function(e) {
   if(e.target.className ==='booking-button') {
   e.preventDefault()
   let room = parseInt(e.target.closest('button').id)
-  currentGuest.makeBooking(currentGuest.id, today, room)
+  let newBooking = currentGuest.makeBooking(currentGuest.id, today, room)
+  hotel.allBookings.push(newBooking)
+  console.log(hotel.allBookings)
   $(".current-guest-bookings").empty()
   domUpdates.displayGuestBookingsHeader(currentGuest)
   domUpdates.displayGuestBookings(currentGuest)
   $('.room-filter').empty()
+  domUpdates.displayAmountTotalSales(hotel.totalSales.toFixed(2))
+  domUpdates.displayTotalSalesRoomServiceToday(hotel.todayOrderSalesTotal);
+  domUpdates.displayPercentOccupied(hotel.todayBookings);
   }
 })
 
@@ -203,6 +208,9 @@ $(".rooms").on('click', function(e) {
   domUpdates.displayGuestOrders(currentGuest);
   currentGuest.calcTotalOrders()
   domUpdates.displayGuestOrdersTotal(currentGuest);
+  domUpdates.displayAmountTotalSales(hotel.totalSales.toFixed(2))
+  domUpdates.displayTotalSalesRoomServiceToday(hotel.todayOrderSalesTotal);
+  domUpdates.displayPercentOccupied(hotel.todayBookings);
   }
 });
 
@@ -217,6 +225,9 @@ $(".rooms").on('click', function(e) {
   domUpdates.displayGuestOrders(currentGuest);
   currentGuest.calcTotalOrders()
   domUpdates.displayGuestOrdersTotal(currentGuest);
+  domUpdates.displayAmountTotalSales(hotel.totalSales.toFixed(2))
+  domUpdates.displayTotalSalesRoomServiceToday(hotel.todayOrderSalesTotal);
+  domUpdates.displayPercentOccupied(hotel.todayBookings);
   }
 })
 
@@ -224,11 +235,9 @@ $(".rooms").on('click', function(e) {
     e.preventDefault();
     let inputValue = $(".room-date-search-input").val()
     let info = hotel.findAvailableRoomsByDate(inputValue).sort((a,b) => b.roomType - a.roomType)
-    console.log(info)
     domUpdates.displayRoomsMain(info)
     $(".room-date-search-input").val('')
   })
-
 
 };
 

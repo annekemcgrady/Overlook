@@ -4,8 +4,6 @@ import Hotel from './Hotel';
 const domUpdates = {
 
   displayDate(date) {
-  // var options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
-  // var longDate = date.toLocaleDateString('en-EN', options);
     $(".main-date").text(date)
   },
 
@@ -48,10 +46,6 @@ const domUpdates = {
     displayLeastBookedDate(num) {
       $('.least-booked').text(num)
     },
-//dO I NEED THIS ONE?
-    // displayGuestName(guest) {
-    //   $(".guest-name").text(guest.name.toUpperCase())
-    // },
 
     displayCurrentGuestOnAllPages(guest) {
       $(".customer-orders-container").prepend("<h3 class='current-guess'>Current Guest: <span class='guest-name'></span></h3>")
@@ -117,18 +111,18 @@ const domUpdates = {
     },
 
     displayBookingMenu(){
-      $(".new-booking").append("<div class='room-filter'><h3>Please select a room type</h3><button class='r-suite'>Residential Suite</button><button class='j-suite'>Junior Suite</button><button class='suite'>Suite</button><button class='single'>Single</button><div class='room-list-container'><div class='room-list'></ul></div></div>")
+      $(".new-booking").append("<div class='room-filter'><button class='r-suite'>Residential Suite</button><button class='j-suite'>Junior Suite</button><button class='suite'>Suite</button><button class='single'>Single</button><div class='room-list-container'><div class='room-list'></ul></div></div>")
     },
 
     displayRooms(info) {
       info.forEach(room => {
-      $(".room-list").append(`<p>Type: ${room.roomType.toUpperCase()} Room Number: ${room.number} Beds: ${room.numBeds} Bed size: ${room.bedSize.toUpperCase()} Bidet: ${room.bidet} <button type='button' class='booking-button' id='${room.number}'>Book</button></p>`) 
+      $(".room-list").append(`<div class ="room-div">Type: ${room.roomType.toUpperCase()} Room Number: ${room.number} Beds: ${room.numBeds} Bed size: ${room.bedSize.toUpperCase()} Bidet: ${room.bidet} <button type='button' class='booking-button' id='${room.number}'>Book</button></div>`) 
     })
   },
 
   displayRoomsMain(info) {
     info.forEach(room => {
-    $(".search-rooms-by-date").append(`<p>Type: ${room.roomType.toUpperCase()} Room Number: ${room.number} Beds: ${room.numBeds} Bed size: ${room.bedSize.toUpperCase()} Bidet: ${room.bidet}</p>`) 
+    $(".search-rooms-by-date").append(`<div class ="room-div">Type: ${room.roomType.toUpperCase()} Room Number: ${room.number} Beds: ${room.numBeds} Bed size: ${room.bedSize.toUpperCase()} Bidet: ${room.bidet}</div>`) 
   })
 },
 

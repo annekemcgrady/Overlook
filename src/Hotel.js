@@ -1,4 +1,3 @@
-import domUpdates from './domUpdates';
 
 class Hotel {
   constructor(date, allUsers, allBookings, allOrders, allRooms) {
