@@ -20,13 +20,13 @@ Run `npm start` in your terminal. Go to `http://localhost:8080/` and you should 
 
 ## Screenshots
 
-[main page](./src/images/overlook-main.png)
+![main page](./src/images/overlook-main.png)
 
-[guest]
+![guest]
 
-[rooms]
+![rooms]
 
-[orders]
+![orders]
 
 
 
