@@ -1,6 +1,7 @@
 # Overlook
 
-# Project Description
+## Project Description
+Overlook is a hotel management site.  The intended user is a hotel manager.  The site consists of a dashboard with four tabs.  the initial view is a general overview of hotel statistics.  On the Guest tab, a guest can be selected or a new guest can be created.  Once either of those events have happened the view on the tabs switches to information that is specific to the selected guest.
 
 ## Setup
 
@@ -17,7 +18,15 @@ npm install
 Run `npm start` in your terminal. Go to `http://localhost:8080/` and you should see the page.
 
 
-# Screenshots
+## Screenshots
+
+[main page]
+
+[guest]
+
+[rooms]
+
+[orders]
 
 
 
