@@ -26,11 +26,13 @@ pullAllOrders(num) {
 makeBooking(id, date, room) {
   let booking = new Booking(id, date, room)
   this.bookings.push(booking)
+  console.log(this.bookings)
 }
 
 makeOrder(id, date, food) {
   let order = new Order(id, date, food)
   this.orders.push(order)
+  console.log(this.orders)
 }
 
 calcTotalOrders() {

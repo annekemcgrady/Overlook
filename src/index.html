@@ -8,10 +8,12 @@
   </head>
   <body>
     <header class="header">
+      <section class="forecast">Today's<br>Temperature: <br> -15 F</section>
+      <section class="horoscope">Your Daily Horoscope: </section>
       <!-- <img src="/images/turing-logo.png" alt="turing logo" height="100px" width="100px"> -->
     </header>
     <div class="quote">Quote Of The Day: "All work and no play makes Jack a dull boy" - Anonymous</div>
-    <main class="main">
+    <main class="real-main">
       <aside class="aside">
         <h3>Your Reminders...</h3>
         <ul class="to-do">
@@ -22,7 +24,7 @@
           <li>Buy typewriter ribbon</li>
         </ul>
         <form class="to-do-form">
-          <input type="text" class="to-do-input" placeholder="Enter a new reminder">
+          <input type="text" class="to-do-input">
           <button class="to-do-button">Add Reminder</button>
         </form>
       </aside>
@@ -34,14 +36,14 @@
               <li class="tab-link" data-tab="tab-4">Orders</li>
               </ul>
               <div id="tab-1" class="tab-content current main">
-                <h2>Hello Jack!  Today's date is <span class="main-date"></span></h2>
-                <h2>Total of room service sales for today is $ <span class="main-sales"></span></h2>
+                <h2>Hello Jack!</h2><h2>Today's date is <span class="main-date"></span></h2>
+                <h2>Total of sales for today is $<span class="main-sales"></span></h2>
                 <h2>Available rooms: <span class="main-available-rooms"></span></h2>
-                <h2>The hotel is <span class="main-percent"></span> % occupied</h2>
+                <h2>The hotel is <span class="main-percent"></span>% occupied</h2>
               </div>
               <div id="tab-2" class="tab-content guest">
                 <h3>Current Guest: <span class="guest-name"></span></h3>
-                <ul class="current-guest-bookings"></ul>
+                <!-- <ul class="current-guest-bookings"></ul> -->
                 <form class="guest-search-form">
                   <input class="guest-search-input" placeholder="Enter guest name"></input>
                   <button type="submit" class="guest-search-button">SEARCH</button>
@@ -53,18 +55,23 @@
                 <button class="reset-button">RESET</button>
               </div>
               <div id="tab-3" class="tab-content rooms">
+                <div class="rooms-main-content">
                 <h2>Today's bookings are: <ul class="main-bookings"></ul></h2>
                 <h2>The date with the most bookings is <span class="most-booked"></span></h2>
                 <h2>The date with the least bookings is <span class="least-booked"></span></h2>
+                </div>
                 <ul class="current-guest-bookings"></ul>
                 <section class="new-booking"></section>
               </div>
               <div id="tab-4" class="tab-content orders">
-                <h2>Today's room service orders are: <ul class="main-orders"></ul></h2>
+                <div class="orders-main-content">
+                  <h2>Today's room service orders are: <ul class="main-orders"></ul></h2>
+                  <h2>Total cost of room service orders for today is $<span class="main-order-sales"></span></h2>
                 <form class="order-search-form">
-                    <input class="order-search-input" placeholder="Enter date in dd/mo/yyyy format"></input>
-                    <button type="submit" class="order-search-button">SEARCH</button>
+                  <input class="order-search-input" placeholder="Enter date in dd/mo/yyyy format"></input>
+                  <button type="submit" class="order-search-button">SEARCH</button>
                   </form>
+                </div>
                 <ul class="current-guest-orders"></ul>
                 <ul class ="date-orders"></ul>
               </div>

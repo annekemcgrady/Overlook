@@ -72,6 +72,15 @@ describe('Hotel', function() {
     expect(hotel.findAvailableRoomsByDate("21/08/2019").length).to.equal(8)
   })
 
+  it('should find total sales for the current day', function() {
+    hotel = new Hotel("21/08/2019", usersData, bookingsData, orderData, roomsData)
+    expect(hotel.totalSales).to.equal(619.90)
+  })
+
+  it('should filter available rooms for a date by room type', function() {
+    expect(hotel.filterAvailableRoomByType("21/08/2019", "residential suite").length).to.equal(2)
+  })
+
 });
 
   
