@@ -22,11 +22,11 @@ Run `npm start` in your terminal. Go to `http://localhost:8080/` and you should 
 
 ![main page](/src/images/overlook-main.png)
 
-![guest]
+![guest](/src/images/overlook-guest.png)
 
-![rooms]
+![rooms](/src/images/overlook-rooms.png)
 
-![orders]
+![orders](/src/images/overlook-orders.png)
 
 
 
