@@ -78,6 +78,7 @@ function timer() {
       domUpdates.displayGuestBookingsError(); 
     }
     if(currentGuest.orders.length) {
+    $(".date-orders").empty()
     domUpdates.displayGuestOrdersHeader(currentGuest);
     domUpdates.displayGuestOrders(currentGuest);
     domUpdates.displayGuestOrdersTotal(currentGuest);
@@ -165,13 +166,19 @@ $(".rooms").on('click', function(e) {
 })
 
 $(".rooms").on('click', function(e) {
+  if(e.target.className ==='booking-button') {
   e.preventDefault()
-  console.log(e.target)
+  let room = parseInt(e.target.closest('button').id)
+  currentGuest.makeBooking(currentGuest.id, today, room)
+  console.log(room)
+  $(".current-guest-bookings").empty()
+  domUpdates.displayGuestBookingsHeader(currentGuest)
+  domUpdates.displayGuestBookings(currentGuest)
+  $('.room-filter').empty()
+  }
 })
 
-
 };
-
 
 setTimeout(timer, 500);
 
