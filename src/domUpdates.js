@@ -118,6 +118,10 @@ const domUpdates = {
       info.forEach(room => {
       $(".room-list").append(`<p>Type: ${room.roomType.toUpperCase()} Room Number: ${room.number} Beds: ${room.numBeds} Bed size: ${room.bedSize.toUpperCase()} Bidet: ${room.bidet} <button type='button' class='booking-button' id='${room.number}'>Book</button></p>`) 
     })
+  },
+
+  displayRoomServiceOrderMenu() {
+    $(".rooms").append("<div class='dropdown'><button class='dropbtn'>ROOM SERVICE</button><div class='dropdown-content'><h4 class='bloody-mary'>Bloody Mary $4.99</h4><h4 class='sandwich'>Sandwich $10.99</h4></div></div>")
   }
 
    };
@@ -128,7 +132,7 @@ const domUpdates = {
   //Display today's bookings - DONE
   //Display today's percentage occupied - DONE
   //Display today's room service orders - DONE
- //Display today's room's avaiable (#?)
+ //Display today's room's avaiable - DONE
 
   //CUSTOMER
 
@@ -147,7 +151,7 @@ const domUpdates = {
 //Display summary of all past and current bookings -DONE
 //Book a room button - DONE
 //Drop down menu with all available room types - DONE
-//if not available display room types that are available
+//if not available display room types that are available - DONE
 //Once booked - Order room service button
 
 // ORDERS

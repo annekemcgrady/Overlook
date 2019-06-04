@@ -43,7 +43,7 @@ fetch('https://fe-apps.herokuapp.com/api/v1/overlook/1903/room-services/roomServ
 function timer() {
   // console.log("booking data: ", bookingsData)
   hotel = new Hotel(today, userData, bookingsData, roomServicesData, roomsData);
-  domUpdates.displayAmountTotalSales(hotel.totalSales)
+  domUpdates.displayAmountTotalSales(hotel.totalSales.toFixed(2))
   domUpdates.displayTotalSalesRoomServiceToday(hotel.todayOrderSalesTotal);
   domUpdates.displayPercentOccupied(hotel.todayBookings);
   if(hotel.todayBookings.length) {
@@ -170,13 +170,50 @@ $(".rooms").on('click', function(e) {
   e.preventDefault()
   let room = parseInt(e.target.closest('button').id)
   currentGuest.makeBooking(currentGuest.id, today, room)
-  console.log(room)
   $(".current-guest-bookings").empty()
   domUpdates.displayGuestBookingsHeader(currentGuest)
   domUpdates.displayGuestBookings(currentGuest)
   $('.room-filter').empty()
   }
 })
+
+$(".rooms").on('click', function(e) {
+  if(e.target.className ==='booking-button') {
+  e.preventDefault();
+  let hasBooking = currentGuest.checkBookingByDate(today.toString());
+   if(hasBooking === true) { 
+    domUpdates.displayRoomServiceOrderMenu()
+    }
+  }
+});
+
+$(".rooms").on('click', function(e) {
+  if(e.target.className ==='bloody-mary') {
+  e.preventDefault();
+  $(".current-guest-orders").empty()
+  let food = 'Bloody Mary';
+  let cost = 4.99;
+  currentGuest.makeOrder(currentGuest.id, today, food, cost)
+  domUpdates.displayGuestOrdersHeader(currentGuest);
+  domUpdates.displayGuestOrders(currentGuest);
+  currentGuest.calcTotalOrders()
+  domUpdates.displayGuestOrdersTotal(currentGuest);
+  }
+});
+
+$(".rooms").on('click', function(e) {
+  if(e.target.className ==='sandwich') {
+  e.preventDefault();
+  $(".current-guest-orders").empty()
+  let food = 'Super Awesome Sandwich';
+  let cost = 10.99;
+  currentGuest.makeOrder(currentGuest.id, today, food, cost)
+  domUpdates.displayGuestOrdersHeader(currentGuest);
+  domUpdates.displayGuestOrders(currentGuest);
+  currentGuest.calcTotalOrders()
+  domUpdates.displayGuestOrdersTotal(currentGuest);
+  }
+});
 
 };
 
