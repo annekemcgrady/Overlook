@@ -38,7 +38,7 @@ it('should have a date', function() {
 });
 
 it('should have a room number', function() {
-  expect(booking.room).to.equal(100);
+  expect(booking.roomNumber).to.equal(100);
 });
 
 });

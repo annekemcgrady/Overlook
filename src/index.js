@@ -67,10 +67,11 @@ function timer() {
     currentGuest = new Guest(obj, bookingsData, roomServicesData);
     console.log(currentGuest)
     $(".rooms-main-content").hide();
+    $(".room-date-search-input").empty()
     $(".orders-main-content").hide();
     $(".current-guest-bookings").html('');
     $(".current-guest-orders").html('');
-    domUpdates.displayGuestName(currentGuest);
+    domUpdates.displayCurrentGuestOnAllPages(currentGuest);
     if (currentGuest.bookings.length) {
     domUpdates.displayGuestBookingsHeader(currentGuest);
     domUpdates.displayGuestBookings(currentGuest);
@@ -81,8 +82,9 @@ function timer() {
     $(".date-orders").empty()
     domUpdates.displayGuestOrdersHeader(currentGuest);
     domUpdates.displayGuestOrders(currentGuest);
+    currentGuest.calcTotalOrders()
     domUpdates.displayGuestOrdersTotal(currentGuest);
-    } else { domUpdates.displayGuestOrdersError();}
+    } else {domUpdates.displayGuestOrdersError();}
     }
     $(".guest-search-input").val('');
   })
@@ -104,8 +106,9 @@ function timer() {
     $(".current-guest-bookings").html('');
     $(".current-guest-orders").html('');
     $(".rooms-main-content").hide();
+    $(".room-date-search-input").empty()
     $(".orders-main-content").hide();
-    domUpdates.displayGuestName(currentGuest);
+    domUpdates.displayCurrentGuestOnAllPages(currentGuest);
     $(".guest-create-input").val('');
     domUpdates.displayGuestBookingsError();
     domUpdates.addBookingForm();
@@ -114,6 +117,7 @@ function timer() {
 
   $(".order-search-form").on('submit', function(e) {
     e.preventDefault()
+    $(".date-orders").empty()
     let inputValue = $(".order-search-input").val();
     let orders = hotel.ordersByDate(inputValue);
     console.log(orders)
@@ -126,6 +130,7 @@ function timer() {
     if(e.target.className === 'make-booking') {
     e.preventDefault()
     domUpdates.displayBookingMenu() 
+    // $(".new-booking").empty()
   }
   })
 
@@ -213,7 +218,17 @@ $(".rooms").on('click', function(e) {
   currentGuest.calcTotalOrders()
   domUpdates.displayGuestOrdersTotal(currentGuest);
   }
-});
+})
+
+  $(".search-rooms-by-date").on('submit', function(e) {
+    e.preventDefault();
+    let inputValue = $(".room-date-search-input").val()
+    let info = hotel.findAvailableRoomsByDate(inputValue).sort((a,b) => b.roomType - a.roomType)
+    console.log(info)
+    domUpdates.displayRoomsMain(info)
+    $(".room-date-search-input").val('')
+  })
+
 
 };
 
