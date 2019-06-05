@@ -1,22 +1,15 @@
 import Guest from '../src/Guest';
-import Booking from '../src/Booking';
-import domUpdates from '../src/domUpdates';
-import Order from '../src/Order';
 import sampleBookings from '../src/sampleBookings';
 import sampleRoomService from '../src/sampleRoomService';
 var chai = require('chai');
 var expect = chai.expect;
 
-
 describe('Guest', function() {
 let guest;
-let booking;
 let bookingsData = sampleBookings.bookings
 let orderData = sampleRoomService.roomServices
 let today = "17/11/2019";
-let user = {id: 5,
-            name: "Reginald Schaden"
-            };
+let user = {id: 5,name: "Reginald Schaden"};
 
 beforeEach(function() {
   guest = new Guest(user, bookingsData, orderData)
@@ -78,10 +71,10 @@ it('should check for its bookings by date ', function(){
   expect(guest.checkBookingByDate('31/08/2019')).to.equal(true)
   })
 
-  it('should be able to cancel a booking', function(){
-    expect(guest.bookings).to.eql([{ userID: 5, date: '31/08/2019', roomNumber: 8 }])
-    guest.deleteBooking('31/08/2019', 8)
-    expect(guest.bookings).to.eql([])
-  })
+it('should be able to cancel a booking', function(){
+  expect(guest.bookings).to.eql([{ userID: 5, date: '31/08/2019', roomNumber: 8 }])
+  guest.deleteBooking('31/08/2019', 8)
+  expect(guest.bookings).to.eql([])
+})
 
 });

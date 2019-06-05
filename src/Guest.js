@@ -31,9 +31,9 @@ makeOrder(id, date, food, cost) {
 }
 
 calcTotalOrders() {
- this.ordersTotalCost = this.orders.reduce((acc,order) => {
-   return acc += order.totalCost
-   },0)
+this.ordersTotalCost = this.orders.reduce((acc,order) => {
+  return acc += order.totalCost
+  },0)
   }
 
 checkBookingByDate(givenDate) {
@@ -45,7 +45,7 @@ if(!this.bookings.filter(el => el.date === givenDate).length) {
 }
 
 deleteBooking(date,room) {
- if(this.checkBookingByDate(date)) {
+if(this.checkBookingByDate(date)) {
   let index = this.bookings.findIndex(el => el.roomNumber === room)
   return this.bookings.splice(index,1)
   }
