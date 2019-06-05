@@ -48,10 +48,10 @@ function timer() {
   domUpdates.displayPercentOccupied(hotel.todayBookings);
   if(hotel.todayBookings.length) {
   domUpdates.displayAllTodayBookings(hotel.todayBookings);
-  } else { domUpdates.displayNoBookingsMsg()};
+  } else { domUpdates.displayNoBookingsMsg()}
   if(hotel.todayOrders.length) {
   domUpdates.displayAllTodayOrders(hotel.todayOrders);
-  } else { domUpdates.displayNoOrdersMsg()};
+  } else { domUpdates.displayNoOrdersMsg()}
   domUpdates.displayNumberAvailableRooms(hotel.todayBookings);
   domUpdates.displayMostBookedDate(hotel.mostBooked);
   domUpdates.displayLeastBookedDate(hotel.leastBooked);
@@ -94,7 +94,7 @@ function timer() {
     let hasBooking = currentGuest.checkBookingByDate(today.toString());
      if(hasBooking === false) { 
        domUpdates.addBookingForm();
-    };
+    }
   })
 
   $(".guest-create-form").on('submit', function(e) {
@@ -102,7 +102,6 @@ function timer() {
     let inputValue = $(".guest-create-input").val();
     let newObj = {id: 0, name: inputValue}
     currentGuest = new Guest(newObj, bookingsData, roomServicesData);
-    console.log(currentGuest)
     $(".current-guest-bookings").html('');
     $(".current-guest-orders").html('');
     $(".rooms-main-content").hide();
@@ -120,7 +119,6 @@ function timer() {
     $(".date-orders").empty()
     let inputValue = $(".order-search-input").val();
     let orders = hotel.ordersByDate(inputValue);
-    console.log(orders)
     domUpdates.displayOrdersByDateHeader(inputValue);
     domUpdates.displayOrdersByDate(orders);
     $(".order-search-input").val('');
@@ -176,7 +174,6 @@ $(".rooms").on('click', function(e) {
   let room = parseInt(e.target.closest('button').id)
   let newBooking = currentGuest.makeBooking(currentGuest.id, today, room)
   hotel.allBookings.push(newBooking)
-  console.log(hotel.allBookings)
   $(".current-guest-bookings").empty()
   domUpdates.displayGuestBookingsHeader(currentGuest)
   domUpdates.displayGuestBookings(currentGuest)
@@ -239,7 +236,7 @@ $(".rooms").on('click', function(e) {
     $(".room-date-search-input").val('')
   })
 
-};
+}
 
 setTimeout(timer, 500);
 

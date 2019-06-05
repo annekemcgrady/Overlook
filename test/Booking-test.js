@@ -1,21 +1,11 @@
-import Guest from '../src/Guest';
 import Booking from '../src/Booking';
-import domUpdates from '../src/domUpdates';
-import Order from '../src/Order';
-import sampleBookings from '../src/sampleBookings';
-import sampleRoomService from '../src/sampleRoomService';
 var chai = require('chai');
 var expect = chai.expect;
 
-
 describe('Booking', function() {
 let booking;
-let bookingsData = sampleBookings.bookings
-let orderData = sampleRoomService.roomServices
 let today = "17/11/2019";
-let user = {id: 5,
-            name: "Reginald Schaden"
-            };
+let user = {id: 5, name: "Reginald Schaden"};
 
 beforeEach(function() {
   booking = new Booking(user.id, today, 100)

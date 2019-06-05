@@ -67,13 +67,13 @@ findAvailableRoomsByDate(date) {
   return Object.values(this.allRooms).filter(el => !booked.includes(el.number));
   }
 
-  filterAvailableRoomByType(date,type) {
-   return this.findAvailableRoomsByDate(date).filter(room => room.roomType === type)
+filterAvailableRoomByType(date,type) {
+  return this.findAvailableRoomsByDate(date).filter(room => room.roomType === type)
   }
 
   totalOfSales(date) {
   let orderSales = this.orderCostByDate(date)
-   let roomSales = this.allRooms.reduce((acc, room) => {
+  let roomSales = this.allRooms.reduce((acc, room) => {
       this.todayBookings.forEach(booking => {
         if(room.number === booking) {
           acc += room.costPerNight
@@ -82,13 +82,9 @@ findAvailableRoomsByDate(date) {
       return acc
    },0)
    return roomSales + orderSales
-   }
+  }
 
-};
-
-
-
-
+}
 
 
 

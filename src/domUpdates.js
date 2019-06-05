@@ -12,27 +12,27 @@ const domUpdates = {
     bookings.forEach(booking => {
     $(".main-bookings").append(`<li>Room Number: ${booking}</li>`)
     })
-  } else {
+      } else {
     $(".main-bookings").append(`<li>THERE ARE NO BOOKING FOR TODAY</li>`) 
-  }
-  },
+      }
+    },
    
   displayPercentOccupied(bookings) {
     $(".main-percent").text((bookings.length/200)*100)
     },
 
-    displayAmountTotalSales(sales) {
+  displayAmountTotalSales(sales) {
       $(".main-sales").text(sales)
     },
 
-    displayTotalSalesRoomServiceToday(orderTotal) {
+  displayTotalSalesRoomServiceToday(orderTotal) {
       $(".main-order-sales").text(orderTotal)
     },
 
-    displayAllTodayOrders(orders){
-        orders.forEach(order => {
-        $(".main-orders").append(`<li>Room Service: ${order.food} $${order.totalCost}</li>`)
-        })
+  displayAllTodayOrders(orders){
+      orders.forEach(order => {
+      $(".main-orders").append(`<li>Room Service: ${order.food} $${order.totalCost}</li>`)
+      })
     },
 
     displayNumberAvailableRooms(bookings) {
@@ -55,13 +55,14 @@ const domUpdates = {
 
     displayGuestBookingsHeader(guest) {
       $(".current-guest-bookings").append(`<li class="list-header"> Bookings for ${guest.name}:</li>`)
-  },
+    },
 
     displayGuestBookings(guest) {
       guest.bookings.forEach(booking => {
       $(".current-guest-bookings").append(`<li>${booking.date} in Room ${booking.roomNumber}</li>`)
       })
     },
+    
     displayGuestBookingsError() { 
       $(".current-guest-bookings").append(`<li class="booking-error">This customer has no current bookings</li>`)
     },
@@ -72,7 +73,7 @@ const domUpdates = {
 
     displayGuestOrdersHeader(guest) {
       $(".current-guest-orders").append(`<li class="list-header"> Room Service Orders For ${guest.name}:</li>`)
-  },
+    },
 
     displayGuestOrders(guest) {
       guest.orders.forEach(order => {
@@ -130,47 +131,7 @@ const domUpdates = {
     $(".rooms").append("<div class='dropdown'><button class='dropbtn'>ROOM SERVICE</button><div class='dropdown-content'><h4 class='bloody-mary'>Bloody Mary $4.99</h4><h4 class='sandwich'>Sandwich $10.99</h4></div></div>")
   }
 
-   };
-  
-
-  //MAIN
-  //Display today's date - DONE
-  //Display today's bookings - DONE
-  //Display today's percentage occupied - DONE
-  //Display today's room service orders - DONE
- //Display today's room's avaiable - DONE
-
-  //CUSTOMER
-
-  //Display customer name once selected - DONE
-  //Search input for customer by name - DONE
-  //button to search and make enter work - DONE
-  //input to create a new customer - DONE
-  //Update all tabs to include info for that user - DONE
-
-  //ROOMS
-  //GENERAL
-  //Display Most popular booking date - DONE
-  //Display date with most rooms available - DONE
-
-  //ROOMS BY CUSTOMER
-//Display summary of all past and current bookings -DONE
-//Book a room button - DONE
-//Drop down menu with all available room types - DONE
-//if not available display room types that are available - DONE
-//Once booked - Order room service button
-
-// ORDERS
-//GENERAL
-//Search input for all orders by DATE - DONE
-
-//BY CUSTOMER
-//breakdown of dates and orders for customer - DONE
-//total spent by date - ??
-//total spent for all days- DONE
-//error if no orders found - DONE
-
-
+};
 
 
 export default domUpdates;
